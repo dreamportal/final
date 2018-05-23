@@ -59,6 +59,7 @@
 <skip>true</skip>
 </configuration>
 </plugin>
+			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -88,7 +89,15 @@
 			</plugin>
 		</plugins>
 	</build>
-
+<distributionManagement>
+ <repository>
+            <uniqueVersion>false</uniqueVersion>
+          <id>mycloudhub</id>
+          <name>Cloud Hub</name>
+          <url>https://anypoint.mulesoft.com/cloudhub/</url>
+          <layout>default</layout>
+        </repository>
+    </distributionManagement>
 	<!-- Mule Dependencies -->
 	<dependencies>
 		<!-- Xml configuration -->
