@@ -27,6 +27,38 @@
                     <copyToAppsDirectory>true</copyToAppsDirectory>
 				</configuration>
 			</plugin>
+			
+<!-- Deploy to Cloudhub -->
+<plugin>
+<groupId>org.mule.tools.maven</groupId>
+<artifactId>mule-maven-plugin</artifactId>
+<version>2.0</version>
+<configuration>
+<deploymentType>cloudhub</deploymentType>
+<muleVersion>3.8.6</muleVersion>
+<username>M1045583</username>
+<password>Kashyap.7</password>
+<redeploy>true</redeploy>
+<environment>Sandbox</environment>
+<workerType>Micro</workerType>
+</configuration>
+<executions>
+<execution>
+<id>deploy</id>
+<phase>deploy</phase>
+<goals>
+<goal>deploy</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-deploy-plugin</artifactId>
+<configuration>
+<skip>true</skip>
+</configuration>
+</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -56,35 +88,7 @@
 			</plugin>
 		</plugins>
 	</build>
-<profiles>
-		<profile>
-			<id>standalone</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.mule.tools.maven</groupId>
-						<artifactId>mule-maven-plugin</artifactId>
-						<configuration>
-							<deploymentType>standalone</deploymentType>
-							<muleVersion>${mule.version}</muleVersion>
-							<muleHome>${mule.home}</muleHome>
-							<applicationName>${artifactId}</applicationName>
-							<community>${mule.runtime.community}</community>
-						</configuration>
-						<executions>
-							<execution>
-								<id>deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-</profiles>
+
 	<!-- Mule Dependencies -->
 	<dependencies>
 		<!-- Xml configuration -->
